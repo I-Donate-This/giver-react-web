@@ -16,7 +16,6 @@ deploy:
   skip_cleanup: true
   region: ca-central-1
   local-dir: build
-  acl: public_read
   on:
     repo: I-Donate-This/giver-react-web
     branch: develop
