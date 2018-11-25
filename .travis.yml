@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- stable
+cache:
+  directories:
+  - node_modules
+script:
+- npm test
+- npm run build
+deploy:
+  provider: s3
+  access_key_id: AKIAIZFKPTX6Q3ZZWZLA
+  secret_access_key:
+    secure: jXk8N7xU+E97F37Uwbo3Qu+/D5ckw9yZ1FV30/JL7b+mXimmsX5KoeKgs/5PxxQl02C2ME+pL5rOG53AQn9Lop8vEKlGNqx6nTQxbIE9zo2V793nRXGbMCCcF8/s30s39dLSdlHTmYBOyJrmlsNE/I6XX23b8HGojgwuUoNenyxG4ax3+dqQs48Alb0JUGXUfd78dl6oil9yC3StIQpqEUPucDfSlp5DFhvUJa0hPgnxp0TJlPsiqGVat9Tubaig0vLn7M4XdGLDb4PHwCPdfmBUl5SuUjU9+G2L/Wm0QrWxjw9XtxCwVSEvQUu+YlQlmO/TQPP3kqCEZZCM2R6RVHoG7cnGsw2MIg4kETI0z5WdsO8WnbR5j21xOxjdg+L2kDOT4aUNC/hedprR0m3zQulDCh/9uEsPAtSY2OOQRrP3IYHJhZr12hi8IlbnZumY3AuR4W+oEzJ1h42wXypSMGe7mpIr3o/KxyYm8efNPKMbef+cjgIgPDyjCVx7kvlsIO1u/vb3BtjmSotHMcphsKMz1jRnjOVGraVLf+vbZmD5tN69NQM81UPDRSmOjoV4S+IBmk7ZfdB7ev3jwy4KzuOA6ppZHYQHFxNWqMhXpxy8icCHAlIUmAIh4LKk8NlhR0M9k69B+48vZdP9fjTc+3p3YCHN1x2wmPCgI64ppPI=
+  bucket: giver-web
+  skip_cleanup: true
+  region: ca-central-1
+  local_dir: build
+notifications:
+  email:
+    recipients:
+    - peter.yu@nexxspace.com
+    on_success: never
+    on_failure: always
