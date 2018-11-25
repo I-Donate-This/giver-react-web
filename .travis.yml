@@ -16,6 +16,8 @@ deploy:
   skip_cleanup: true
   region: ca-central-1
   local_dir: build
+  on:
+    branch: develop
 notifications:
   email:
     recipients:
