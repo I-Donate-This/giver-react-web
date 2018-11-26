@@ -17,6 +17,7 @@ deploy:
   region: ca-central-1
   local-dir: build
   on:
+    repo: I-Donate-This/giver-react-web
     branch: develop
 notifications:
   email:
