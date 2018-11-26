@@ -9,8 +9,9 @@ script:
 - npm run build
 deploy:
   provider: s3
-  access_key_id: AKIAJF6YDG7SFGGNTL7Q
-  secret_access_key: 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
+  access_key_id: AKIAIKEN3CT355R4X55A
+  secret_access_key:
+    secure: cYIF2UQL1EfnzzWgCVZWEOS2G7OBiyx8sCqHaT70NMVRTiAQixyUSxHzmV4raWlNbKO4AKXNSSR6oOHHjb3abBC9ZxDPviOkQJCtI0+UaKK8uxZvrFei6eIGCn29yEHuePK2e+s/ACeN2xOS7Vb9vVe6A8ZUZ4hIUM391ip2cmzXBhFtjkrBaAtPguCeFo4Ngoge4xRKdX1wfqb/3JMjo84LVYHqnj989dNvM/IYvdGdFKYr0p8xCCfgRXxJ8Zy7+TmughnQGy+KbZPWLvFX4DyzTmG+BjRyT+BXkTtSKuC+wc8YRUHAkxmfcDxHpJSgEOYPl1QkD1RmsdNjDbmWrsB+uEznOZR8DQ6c3Z/vl9nCJI5GdaX7hFbSyVYvaSQUeXjpaPsaT0+RkXPDbrKvozJgI7norKFDkgLfAvU1Gzts7PNU2IBuMyojwd9T/zeWMe88i3DWEyUyxrAvUt6Hy5l+kFJo/c4byMir/bDfqEoVC9R/kfVsoBxMq1PeLTnZebA3Mey+kod/rJMfhIatX2EXf2/JEB2/OPI7ABDFfgo15GrGNR/DgO1bm71J2PWKtr26s54KVBDT8QMWQmtrL9NQHM7ERnC88lp8IgC7sMScNvTGrClCISCTt99QhrIdwWGx8+WrWfGiYxMGfrZnjLYcbgo2CZUcK0AU35etCdo=
   bucket: giver-web
   skip_cleanup: true
   region: ca-central-1
