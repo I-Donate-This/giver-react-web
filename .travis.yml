@@ -7,6 +7,8 @@ cache:
 script:
 - npm test
 - npm run build
+before_deploy:
+  - rvm 1.9.3 do gem install aws-sdk -v 2.1.36
 deploy:
   provider: s3
   access_key_id: "AKIAIKEN3CT355R4X55A"
@@ -15,7 +17,7 @@ deploy:
   bucket: giver-web
   skip_cleanup: true
   region: ca-central-1
-  local-dir: "build/"
+  local-dir: build
   on:
     repo: I-Donate-This/giver-react-web
     branch: develop
