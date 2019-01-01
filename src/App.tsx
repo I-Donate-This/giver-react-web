@@ -1,22 +1,19 @@
 import * as React from 'react';
-import './App.css';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
+import createStyles from '@material-ui/core/styles/createStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
+import withRoot from './withRoot';
+import GAppBar from "./components/GAppBar";
 
-import logo from './logo.svg';
+const styles = (theme: Theme) =>
+    createStyles({
+        root: {
+            textAlign: 'center',
+            paddingTop: theme.spacing.unit * 20,
+        },
+    });
 
-class App extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
 
-export default App;
+const App = () => <GAppBar/>;
+
+export default withRoot(withStyles(styles)(App));
