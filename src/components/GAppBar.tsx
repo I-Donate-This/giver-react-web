@@ -21,7 +21,7 @@ function GAppBar(props: any) {
     const {classes} = props;
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="static">
             <div className={classes.root}>
                 <Toolbar>
                     <IconButton className={classes.menuButton} color="inherit">
