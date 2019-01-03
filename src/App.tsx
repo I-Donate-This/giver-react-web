@@ -4,7 +4,7 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 import withRoot from './withRoot';
 import GAppBar from "./components/GAppBar";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 
@@ -18,15 +18,13 @@ const styles = (theme: Theme) =>
 
 
 const App = () => (
-    <Router>
-        <div>
-            <GAppBar/>
-            <Switch>
-                    <Route path="/" exact={true} component={HomePage}/>
-                    <Route path="/login" component={LoginPage}/>
-            </Switch>
-        </div>
-    </Router>
+            <div>
+                <GAppBar/>
+                <Switch>
+                        <Route path="/" exact={true} component={HomePage}/>
+                        <Route path="/login" component={LoginPage}/>
+                </Switch>
+            </div>
 );
 
 export default withRoot(withStyles(styles)(App));
