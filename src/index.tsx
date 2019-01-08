@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import 'typeface-roboto';
-import App from "./App";
+import App from "./containers/App/App";
 import {Provider} from "react-redux";
 import {history, store} from "./configureStore";
 import {ConnectedRouter} from "connected-react-router";

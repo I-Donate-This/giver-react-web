@@ -17,8 +17,13 @@ const styles = {
     },
 };
 
-function GAppBar(props: any) {
-    const {classes} = props;
+interface GAppBarProps {
+    classes: any;
+    title?: string;
+}
+
+function AppBarComponent(props: GAppBarProps) {
+    const {classes, title} = props;
 
     return (
         <AppBar position="static">
@@ -28,7 +33,7 @@ function GAppBar(props: any) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" color="inherit" className={classes.grow}>
-                        The Giver
+                        {!!title ? title : 'The Giver'}
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
@@ -37,8 +42,9 @@ function GAppBar(props: any) {
     );
 }
 
-GAppBar.propTypes = {
+AppBarComponent.propTypes = {
     classes: PropTypes.object.isRequired,
+    title: PropTypes.string,
 };
 
-export default withStyles(styles)(GAppBar);
+export default withStyles(styles)(AppBarComponent);

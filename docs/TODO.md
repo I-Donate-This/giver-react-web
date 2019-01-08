@@ -3,9 +3,10 @@
 ## Login Flow
 1. Login Page Routing
     - [x] Hook up router with redux.
-    - [ ] Route Link from 'Login' AppBar
-    - [ ] Home Page is default
-    - [ ] Change AppBar title based on route.
+    - [x] Setup CloudFront redirection. 
+    - [x] Change AppBar title based on route.
+    - [ ] Route Link from 'Login' AppBar.
+    - [ ] Home Page is default.
 
 1. Login Page Layout & Elements
 1. Submit Login Page via Service

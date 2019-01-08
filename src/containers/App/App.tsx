@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
-import withRoot from './withRoot';
-import GAppBar from "./components/GAppBar";
+import withRoot from '../../withRoot';
 import {Route, Switch} from 'react-router-dom';
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
+import LoginPage from "../../pages/LoginPage";
+import HomePage from "../../pages/HomePage";
+import GAppBarContainer from "../AppBar/AppBarContainer";
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -19,7 +19,7 @@ const styles = (theme: Theme) =>
 
 const App = () => (
             <div>
-                <GAppBar/>
+                <GAppBarContainer/>
                 <Switch>
                         <Route path="/" exact={true} component={HomePage}/>
                         <Route path="/login" component={LoginPage}/>
