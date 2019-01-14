@@ -1,5 +1,24 @@
+import {PureComponent} from "react";
 import * as React from "react";
+import {loadPage} from "./actionCreators";
+import {connect} from "react-redux";
+import {PageProps} from "./models";
 
-const HomePage = () => <div>Home Page</div>;
+class HomePage extends PureComponent {
 
-export default HomePage;
+    constructor(public props: PageProps) {
+        super(props);
+    }
+
+    componentDidMount(): void {
+        this.props.onPageLoad({navTitle: 'Home'});
+    }
+
+    render() {
+        return (
+            <div>Home Page</div>
+        )
+    }
+}
+
+export default connect((state) => ({}), {onPageLoad: loadPage})(HomePage);

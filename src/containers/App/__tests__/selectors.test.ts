@@ -18,4 +18,5 @@ describe('App: selectors', () => {
 
         expect(location).toEqual('/login');
     });
+
 });
