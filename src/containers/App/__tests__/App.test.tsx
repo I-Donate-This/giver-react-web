@@ -2,7 +2,7 @@ import * as React from 'react';
 import App from '../App';
 import {mount} from "enzyme";
 import {MemoryRouter} from "react-router";
-import LoginPage from "../../../pages/LoginPage";
+import LoginPage from "../../../tasks/LoginTask";
 import HomePage from "../../../pages/HomePage";
 import {createMockStore} from "redux-test-utils";
 import {Provider} from "react-redux";

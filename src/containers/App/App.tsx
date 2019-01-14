@@ -4,8 +4,8 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 import withRoot from '../../withRoot';
 import {Route, Switch} from 'react-router-dom';
-import LoginPage from "../../pages/LoginPage";
-import GAppBarContainer from "../AppBar/AppBarContainer";
+import LoginTask from "../../tasks/LoginTask";
+import AppBarContainer from "../AppBar/AppBarContainer";
 import HomePage from "../../pages/HomePage";
 
 const styles = (theme: Theme) =>
@@ -19,10 +19,10 @@ const styles = (theme: Theme) =>
 
 const App = () => (
             <div>
-                <GAppBarContainer/>
+                <AppBarContainer/>
                 <Switch>
                         <Route path="/" exact={true} component={HomePage}/>
-                        <Route path="/login" component={LoginPage}/>
+                        <Route path="/login" component={LoginTask}/>
                 </Switch>
             </div>
 );

@@ -4,9 +4,11 @@ import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from './reducers';
 import {composeWithDevTools} from "redux-devtools-extension";
 import {PagesState} from "./pages/models";
+import {TasksState} from "./tasks/models";
 
 export interface ApplicationState {
-    pages?: PagesState
+    pages?: PagesState,
+    tasks?: TasksState,
 }
 
 export const history = createBrowserHistory();

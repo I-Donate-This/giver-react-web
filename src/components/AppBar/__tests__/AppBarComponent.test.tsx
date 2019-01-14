@@ -1,17 +1,24 @@
 import {mount} from "enzyme";
-import GAppBar from "../AppBarComponent";
+import AppBarComponent from "../AppBarComponent";
 import * as React from "react";
 
-describe('GAppBar', () => {
+describe('AppBarComponent', () => {
     it('renders default title', () => {
-        const wrapper = mount(<GAppBar/>);
+        const wrapper = mount(<AppBarComponent taskStarted={false} onLoginClick={()=>{}} />);
 
-        expect(wrapper.text()).toContain("The Giver");
+        //TODO should not have to specify h6... too brittle.
+        expect(wrapper.find('h6#navTitle').text()).toEqual('');
     });
 
     it('renders title from props', () => {
-        const wrapper = mount(<GAppBar title="News Feed"/>);
+        const wrapper = mount(<AppBarComponent taskStarted={false} title="News Feed" onLoginClick={()=>{}} />);
 
         expect(wrapper.text()).toContain("News Feed");
+    });
+
+    it('renders Close Menu Icon when task started', () => {
+        const wrapper = mount(<AppBarComponent taskStarted={true} title="Login" onLoginClick={()=>{}} />);
+
+        expect(wrapper.text()).toContain("Login");
     });
 });
