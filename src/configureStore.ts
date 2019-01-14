@@ -5,8 +5,7 @@ import createRootReducer from './reducers';
 import {composeWithDevTools} from "redux-devtools-extension";
 import {PagesState} from "./pages/models";
 
-interface ApplicationState {
-    router?: any;
+export interface ApplicationState {
     pages?: PagesState
 }
 

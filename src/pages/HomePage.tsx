@@ -11,7 +11,7 @@ class HomePage extends PureComponent {
     }
 
     componentDidMount(): void {
-        this.props.onPageLoad({navTitle: 'Home'});
+        this.props.onPageLoad({navTitle: 'Giver'});
     }
 
     render() {

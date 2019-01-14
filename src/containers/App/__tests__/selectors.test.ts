@@ -1,22 +1,17 @@
-import {makeSelectLocationPathname} from "../selectors";
+import {makeSelectCurrentPage} from "../selectors";
+import {ApplicationState} from "../../../configureStore";
 
 describe('App: selectors', () => {
-    it('selects location from router', () => {
-        const state = {
-            router: {
-                location: {
-                    pathname: '/login',
-                    search: '',
-                    hash: ''
-                },
-                action: 'POP'
+    it('selects current page from state', () => {
+        const state: ApplicationState = {
+            pages: {
+                currentPage: {navTitle: 'Login'}
             }
         };
-        const locationPathnameStateSelector = makeSelectLocationPathname();
 
-        const location = locationPathnameStateSelector(state);
-
-        expect(location).toEqual('/login');
+        const selector = makeSelectCurrentPage();
+        const currentPageInfo = selector(state);
+        expect(currentPageInfo && currentPageInfo.navTitle).toEqual('Login');
     });
 
 });

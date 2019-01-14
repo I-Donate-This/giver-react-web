@@ -4,11 +4,11 @@ import {AppBarContainer} from "../AppBarContainer";
 import shallowWithStore from "../../../utils/shallowWithStore";
 
 describe('AppBarContainer', () => {
-    it('renders', () => {
+    it('renders Navigation title from current page info', () => {
         const store = createMockStore();
 
-        const wrapper = shallowWithStore(<AppBarContainer routerPath={'/login'}/>, store);
+        const wrapper = shallowWithStore(<AppBarContainer currentPage={{navTitle: 'Navigation Title'}} />, store);
 
-        expect(wrapper.prop('title')).toEqual('Login');
+        expect(wrapper.prop('title')).toEqual('Navigation Title');
     });
 });

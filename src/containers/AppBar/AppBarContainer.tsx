@@ -2,20 +2,16 @@ import GAppBar from "../../components/AppBar/AppBarComponent";
 import * as React from "react";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
-import {makeSelectLocationPathname} from "../App/selectors";
+import {makeSelectCurrentPage} from "../App/selectors";
+import {PageInfo} from "../../pages/actionCreators";
 
 interface GAppBarContainerProps {
-    routerPath: string;
+    currentPage: PageInfo;
 }
 
-function mapLocationPathToTitle(routerPath: string) {
-    return routerPath === '/login' ? 'Login' : 'The Giver';
-}
-
-export const AppBarContainer = (props: GAppBarContainerProps) => <GAppBar
-    title={mapLocationPathToTitle(props.routerPath)}/>;
+export const AppBarContainer = (props: GAppBarContainerProps) =>
+    <GAppBar title={props.currentPage && props.currentPage.navTitle}/>;
 
 export default connect(createStructuredSelector({
-    routerPath: makeSelectLocationPathname()
+    currentPage: makeSelectCurrentPage()
 }))(AppBarContainer);
-

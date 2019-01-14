@@ -1,5 +1,6 @@
 import {createSelector} from 'reselect';
+import {ApplicationState} from "../../configureStore";
 
-const selectRouter = (state: any) => state.router;
+const selectPages = (state: ApplicationState) => state.pages;
 
-export const makeSelectLocationPathname = () => createSelector(selectRouter, routerState => routerState.location.pathname);
+export const makeSelectCurrentPage = () => createSelector(selectPages, pagesState => pagesState ? pagesState.currentPage : undefined);
