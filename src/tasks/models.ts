@@ -1,9 +1,10 @@
-import {StartTaskAction, TaskInfo} from "./actionCreators";
+import {CancelTaskAction, StartTaskAction, TaskInfo} from "./actionCreators";
 
 export interface TasksState {
     currentTask?: TaskInfo;
 }
 
 export interface TaskProps {
-    onStartTask: (pageInfo: TaskInfo) => StartTaskAction;
+    onStartTask: (taskInfo: TaskInfo) => StartTaskAction;
+    onCancelTask: () => CancelTaskAction;
 }
