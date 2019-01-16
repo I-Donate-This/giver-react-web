@@ -13,11 +13,14 @@ describe('[pages] reducers', () => {
     it('sets currentPage info', () => {
         const loadPageAction: LoadPageAction = {
             type: PAGES_LOAD_PAGE,
-            payload: {navTitle: 'Super Awesome Nav Title'}
+            payload: {
+                route: '/awesome',
+                navTitle: 'Super Awesome Nav Title'
+            }
         };
 
         const resultState = pagesReducer({}, loadPageAction);
 
-        expect(resultState).toEqual({currentPage: {navTitle: 'Super Awesome Nav Title'}});
+        expect(resultState).toEqual({currentPage: {route: '/awesome', navTitle: 'Super Awesome Nav Title'}});
     });
 });

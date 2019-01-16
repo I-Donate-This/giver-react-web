@@ -3,6 +3,7 @@ import {PureComponent} from "react";
 import {connect} from "react-redux";
 import {TaskProps} from "./models";
 import {cancelTask, startTask} from "./actionCreators";
+import {ApplicationState} from "../configureStore";
 
 
 class LoginTask extends PureComponent {
@@ -10,8 +11,8 @@ class LoginTask extends PureComponent {
         super(props);
     }
 
-    componentDidMount(): void {
-        this.props.onStartTask({navTitle: 'Login'})
+    componentWillMount(): void {
+        this.props.onStartTask({route: this.props.activatedRoute, navTitle: 'Login'})
     }
 
     componentWillUnmount(): void {
@@ -24,7 +25,9 @@ class LoginTask extends PureComponent {
 }
 
 export default connect(
-    (state) => ({}),
+    (state: ApplicationState) => ({
+        activatedRoute: state.router.location.pathname
+    }),
     {
         onStartTask: startTask,
         onCancelTask: cancelTask,

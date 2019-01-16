@@ -11,7 +11,7 @@ describe('App', () => {
     let store: any;
 
     beforeEach(() => {
-        store = createMockStore({});
+        store = createMockStore({router: {location: {pathname: '/'}}});
     });
 
     test('Routes to Home Page', () => {

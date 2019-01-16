@@ -4,13 +4,14 @@ import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
 import {makeSelectCurrentPage, makeSelectCurrentTask} from "../App/selectors";
 import {PageInfo} from "../../pages/actionCreators";
-import {push} from "connected-react-router";
+import {goBack, push} from "connected-react-router";
 import {TaskInfo} from "../../tasks/actionCreators";
 
 interface AppBarContainerProps {
     currentPage: PageInfo;
     currentTask?: TaskInfo;
     onLoginClick: () => void;
+    onCancelClick: () => void;
 }
 
 export const AppBarContainer = (props: AppBarContainerProps) =>
@@ -18,9 +19,13 @@ export const AppBarContainer = (props: AppBarContainerProps) =>
         title={(props.currentTask && props.currentTask.navTitle) || (props.currentPage && props.currentPage.navTitle)}
         taskStarted={!!props.currentTask}
         onLoginClick={props.onLoginClick}
+        onCancelClick={props.onCancelClick}
     />;
 
 export default connect(createStructuredSelector({
     currentPage: makeSelectCurrentPage(),
     currentTask: makeSelectCurrentTask(),
-}), {onLoginClick: () => push('/login')})(AppBarContainer);
+}), {
+    onLoginClick: () => push('/login'),
+    onCancelClick: () => goBack(),
+})(AppBarContainer);

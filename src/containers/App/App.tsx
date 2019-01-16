@@ -18,13 +18,13 @@ const styles = (theme: Theme) =>
 
 
 const App = () => (
-            <div>
-                <AppBarContainer/>
-                <Switch>
-                        <Route path="/" exact={true} component={HomePage}/>
-                        <Route path="/login" component={LoginTask}/>
-                </Switch>
-            </div>
+    <div>
+        <AppBarContainer/>
+        <Switch>
+            <Route path="/" exact={true} component={HomePage}/>
+            <Route path="/login" component={LoginTask}/>
+        </Switch>
+    </div>
 );
 
 export default withRoot(withStyles(styles)(App));

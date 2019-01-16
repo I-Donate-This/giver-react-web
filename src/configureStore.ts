@@ -7,6 +7,7 @@ import {PagesState} from "./pages/models";
 import {TasksState} from "./tasks/models";
 
 export interface ApplicationState {
+    router?: any,
     pages?: PagesState,
     tasks?: TasksState,
 }

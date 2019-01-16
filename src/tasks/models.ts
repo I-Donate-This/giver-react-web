@@ -5,6 +5,7 @@ export interface TasksState {
 }
 
 export interface TaskProps {
+    activatedRoute: string;
     onStartTask: (taskInfo: TaskInfo) => StartTaskAction;
     onCancelTask: () => CancelTaskAction;
 }

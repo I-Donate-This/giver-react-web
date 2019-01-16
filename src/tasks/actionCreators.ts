@@ -10,7 +10,8 @@ export interface StartTaskAction extends Action {
 export interface CancelTaskAction extends Action {}
 
 export interface TaskInfo {
-    navTitle: string
+    route: string;
+    navTitle: string;
 }
 
 export const startTask = (taskInfo: TaskInfo): StartTaskAction => ({type: TASKS_START_TASK, payload: taskInfo});

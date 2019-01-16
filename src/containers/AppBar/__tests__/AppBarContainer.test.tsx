@@ -9,9 +9,13 @@ describe('AppBarContainer', () => {
 
         const wrapper = shallowWithStore(
             <AppBarContainer
-                currentPage={{navTitle: 'Navigation Title'}}
+                currentPage={{
+                    route: '/myroute',
+                    navTitle: 'Navigation Title'
+                }}
                 currentTask={undefined}
                 onLoginClick={()=>{}}
+                onCancelClick={()=>{}}
             />, store);
 
         expect(wrapper.prop('title')).toEqual('Navigation Title');

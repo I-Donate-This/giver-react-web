@@ -1,6 +1,6 @@
 import {AppBar, Button, IconButton, Toolbar, Typography} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import * as React from "react";
 import * as PropTypes from 'prop-types';
@@ -24,10 +24,17 @@ interface AppBarComponentProps {
     title?: string;
     taskStarted: boolean;
     onLoginClick: () => void;
+    onCancelClick: () => void;
 }
 
 function AppBarComponent(props: AppBarComponentProps) {
-    const {classes, title, taskStarted, onLoginClick} = props;
+    const {
+        classes,
+        title,
+        taskStarted,
+        onLoginClick,
+        onCancelClick,
+    } = props;
 
     return (
         <AppBar position="static">
@@ -35,8 +42,8 @@ function AppBarComponent(props: AppBarComponentProps) {
                 <Toolbar>
                     {
                         taskStarted ?
-                            <IconButton className={classes.menuButton} color="inherit">
-                                <CloseIcon/>
+                            <IconButton className={classes.menuButton} color="inherit" onClick={onCancelClick}>
+                                <ArrowBackIcon/>
                             </IconButton> :
                             <IconButton className={classes.menuButton} color="inherit">
                                 <MenuIcon/>
