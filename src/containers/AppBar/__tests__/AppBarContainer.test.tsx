@@ -14,6 +14,7 @@ describe('AppBarContainer', () => {
                     navTitle: 'Navigation Title'
                 }}
                 currentTask={undefined}
+                activePagePath={'/myroute'}
                 onLoginClick={()=>{}}
                 onCancelClick={()=>{}}
             />, store);

@@ -14,14 +14,13 @@ describe('[tasks] reducers', () => {
         const startTaskAction: StartTaskAction = {
             type: TASKS_START_TASK,
             payload: {
-                route: '/awesomeness',
                 navTitle: 'Super Awesome Nav Title'
             }
         };
 
         const resultState = tasksReducer({}, startTaskAction);
 
-        expect(resultState).toEqual({currentTask: {route: '/awesomeness', navTitle: 'Super Awesome Nav Title'}});
+        expect(resultState).toEqual({currentTask: {navTitle: 'Super Awesome Nav Title'}});
     });
 
     it('unsets currentTask when cancelled', () => {

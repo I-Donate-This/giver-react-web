@@ -1,4 +1,9 @@
-import {makeSelectCurrentPage, makeSelectCurrentRoute, makeSelectCurrentTask} from "../selectors";
+import {
+    makeSelectCurrentPage,
+    makeSelectCurrentRoute,
+    makeSelectCurrentTask,
+    makeSelectNavigatoractivePagePath
+} from "../selectors";
 import {ApplicationState} from "../../../configureStore";
 
 describe('App: selectors', () => {
@@ -24,7 +29,6 @@ describe('App: selectors', () => {
         const state: ApplicationState = {
             pages: {
                 currentPage: {
-                    route: '/home',
                     navTitle: 'Home'
                 }
             }
@@ -32,20 +36,30 @@ describe('App: selectors', () => {
 
         const selector = makeSelectCurrentPage();
         const currentPageInfo = selector(state);
-        expect(currentPageInfo && currentPageInfo.route).toEqual('/home');
         expect(currentPageInfo && currentPageInfo.navTitle).toEqual('Home');
     });
 
     it('selects current task from state', () => {
         const state: ApplicationState = {
             tasks: {
-                currentTask: {route: '/login', navTitle: 'Login'}
+                currentTask: {navTitle: 'Login'}
             }
         };
 
         const selector = makeSelectCurrentTask();
         const currentTaskInfo = selector(state);
         expect(currentTaskInfo && currentTaskInfo.navTitle).toEqual('Login');
-        expect(currentTaskInfo && currentTaskInfo.route).toEqual('/login');
+    });
+
+    it('selects navigator current page path from state', () => {
+        const state: ApplicationState = {
+            navigator: {
+                activePagePath: '/secure/posts'
+            }
+        };
+
+        const selector = makeSelectNavigatoractivePagePath();
+        const activePagePath = selector(state);
+        expect(activePagePath).toEqual('/secure/posts');
     });
 });

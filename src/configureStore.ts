@@ -5,11 +5,13 @@ import createRootReducer from './reducers';
 import {composeWithDevTools} from "redux-devtools-extension";
 import {PagesState} from "./pages/models";
 import {TasksState} from "./tasks/models";
+import {NavigatorState} from "./Navigator/reducers";
 
 export interface ApplicationState {
-    router?: any,
-    pages?: PagesState,
-    tasks?: TasksState,
+    router?: any;
+    navigator?: NavigatorState;
+    pages?: PagesState;
+    tasks?: TasksState;
 }
 
 export const history = createBrowserHistory();

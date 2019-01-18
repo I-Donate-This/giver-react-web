@@ -10,7 +10,6 @@ export interface StartTaskAction extends Action {
 export interface CancelTaskAction extends Action {}
 
 export interface TaskInfo {
-    route: string;
     navTitle: string;
 }
 

@@ -6,13 +6,13 @@ import {cancelTask, startTask} from "./actionCreators";
 import {ApplicationState} from "../configureStore";
 
 
-class LoginTask extends PureComponent {
+class LoginTaskPage extends PureComponent {
     constructor(public props: TaskProps) {
         super(props);
     }
 
     componentWillMount(): void {
-        this.props.onStartTask({route: this.props.activatedRoute, navTitle: 'Login'})
+        this.props.onStartTask({navTitle: 'Login'})
     }
 
     componentWillUnmount(): void {
@@ -31,4 +31,4 @@ export default connect(
     {
         onStartTask: startTask,
         onCancelTask: cancelTask,
-    })(LoginTask);
+    })(LoginTaskPage);

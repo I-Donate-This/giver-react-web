@@ -1,6 +1,6 @@
 import {AppBar, Button, IconButton, Toolbar, Typography} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import CloseIcon from '@material-ui/icons/Close';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import * as React from "react";
 import * as PropTypes from 'prop-types';
@@ -22,9 +22,10 @@ const styles = {
 interface AppBarComponentProps {
     classes: any;
     title?: string;
+    activePagePath: string;
     taskStarted: boolean;
     onLoginClick: () => void;
-    onCancelClick: () => void;
+    onCancelClick: (p: string) => void;
 }
 
 function AppBarComponent(props: AppBarComponentProps) {
@@ -32,6 +33,7 @@ function AppBarComponent(props: AppBarComponentProps) {
         classes,
         title,
         taskStarted,
+        activePagePath,
         onLoginClick,
         onCancelClick,
     } = props;
@@ -42,8 +44,9 @@ function AppBarComponent(props: AppBarComponentProps) {
                 <Toolbar>
                     {
                         taskStarted ?
-                            <IconButton className={classes.menuButton} color="inherit" onClick={onCancelClick}>
-                                <ArrowBackIcon/>
+                            <IconButton className={classes.menuButton} color="inherit"
+                                        onClick={() => onCancelClick(activePagePath)}>
+                                <CloseIcon/>
                             </IconButton> :
                             <IconButton className={classes.menuButton} color="inherit">
                                 <MenuIcon/>
@@ -70,6 +73,7 @@ AppBarComponent.propTypes = {
     title: PropTypes.string,
     taskStarted: PropTypes.bool.isRequired,
     onLoginClick: PropTypes.func.isRequired,
+    onCancelClick: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(AppBarComponent);

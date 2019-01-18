@@ -8,7 +8,6 @@ export interface LoadPageAction extends Action {
 export interface CancelTaskAction extends Action {}
 
 export interface PageInfo {
-    route: string;
     navTitle: string
 }
 

@@ -1,0 +1,45 @@
+@startuml
+skinparam handwritten true
+actor User
+User -> NavBar: load
+NavBar -> Navigator: navigate('/home')
+Navigator -> Router: dispatch(push('/home'));
+Router -> HomePage: componentWillMount
+activate HomePage
+HomePage -> Navigator: dispatch(StartPageAction[PageInfo(Home)])
+ref over Navigator
+    navigator: {
+        currentPage: PageInfo(Home)
+        currentTask: undefined
+    }
+end ref
+deactivate HomePage
+
+User -> NavBar: click<Login>
+NavBar -> Navigator: navigate('/login')
+Navigator -> Router: dispatch(push('/login'));
+Router -> LoginTaskPage: componentWillMount
+activate LoginTaskPage
+LoginTaskPage -> Navigator: dispatch(StartTaskAction[TaskInfo]]
+ref over Navigator
+    navigator: {
+        currentPage: PageInfo(Home)
+        currentTask: TaskInfo(Login)
+    }
+end ref
+deactivate LoginTaskPage
+
+User -> NavBar: click<Cancel>
+NavBar -> Navigator: cancelCurrentTask()
+Navigator -> Router: dispatch(push('/home'));
+Router -> HomePage: componentWillMount
+activate HomePage
+HomePage -> Navigator: dispatch(StartPageAction[PageInfo])
+ref over Navigator
+    navigator: {
+        currentPage: PageInfo(Home)
+        currentTask: undefined
+    }
+end ref
+
+@enduml
