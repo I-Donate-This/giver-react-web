@@ -3,11 +3,15 @@ import {PureComponent} from "react";
 import {connect} from "react-redux";
 import {TaskProps} from "./models";
 import {cancelTask, startTask} from "./actionCreators";
+import {LoginFormContainer, LoginFormModel} from "../containers/LoginFormContainer/LoginFormContainer";
 import {ApplicationState} from "../configureStore";
 
+interface LoginTaskPageProps extends TaskProps {
+    onLoginSubmit: (formData: LoginFormModel) => void;
+}
 
 class LoginTaskPage extends PureComponent {
-    constructor(public props: TaskProps) {
+    constructor(public props: LoginTaskPageProps) {
         super(props);
     }
 
@@ -20,7 +24,9 @@ class LoginTaskPage extends PureComponent {
     }
 
     render() {
-        return (<div>Login Task</div>);
+        return (
+            <LoginFormContainer onLoginSubmit={this.props.onLoginSubmit}/>
+        );
     }
 }
 

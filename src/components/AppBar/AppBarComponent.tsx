@@ -1,4 +1,4 @@
-import {AppBar, Button, IconButton, Toolbar, Typography} from "@material-ui/core";
+import {AppBar, Button, IconButton, Theme, Toolbar, Typography, withTheme} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -26,6 +26,7 @@ interface AppBarComponentProps {
     taskStarted: boolean;
     onLoginClick: () => void;
     onCancelClick: (p: string) => void;
+    theme: Theme;
 }
 
 function AppBarComponent(props: AppBarComponentProps) {
@@ -36,10 +37,13 @@ function AppBarComponent(props: AppBarComponentProps) {
         activePagePath,
         onLoginClick,
         onCancelClick,
+        theme
     } = props;
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" style={
+            {backgroundColor: taskStarted ? theme.palette.primary.dark : theme.palette.primary.main}
+        }>
             <div className={classes.root}>
                 <Toolbar>
                     {
@@ -76,4 +80,4 @@ AppBarComponent.propTypes = {
     onCancelClick: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(AppBarComponent);
+export default withTheme()(withStyles(styles)(AppBarComponent));
