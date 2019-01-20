@@ -1,6 +1,7 @@
-import {AppBar, Button, IconButton, Theme, Toolbar, Typography, withTheme} from "@material-ui/core";
+import {AppBar, IconButton, Theme, Toolbar, Typography, withTheme} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import * as React from "react";
 import * as PropTypes from 'prop-types';
@@ -64,7 +65,9 @@ function AppBarComponent(props: AppBarComponentProps) {
                             <IconButton>
                                 <MoreVertIcon/>
                             </IconButton> :
-                            <Button color="inherit" onClick={onLoginClick}>Login</Button>
+                            <IconButton color="inherit" onClick={onLoginClick}>
+                                <AccountCircleIcon/>
+                            </IconButton>
                     }
                 </Toolbar>
             </div>
