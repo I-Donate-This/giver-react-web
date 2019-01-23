@@ -1,0 +1,42 @@
+swagger: "2.0"
+info:
+  title: User API
+  description: User Service API
+  version: 1.0.0
+host: api.giver.com
+schemes:
+  - https
+paths:
+  /users:
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in Markdown.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /users/login:
+    post:
+      summary: Submit a login request
+      operationId: loginUser
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Attempt to login a user"
+          required: true
+          schema:
+            $ref: "#/definitions/Credentials"
+      responses:
+        200:
+          description: OK
+        default:
+          description: "Logged in successfully."
+definitions:
+  Credentials:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"

@@ -6,6 +6,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {PagesState} from "./pages/models";
 import {TasksState} from "./tasks/models";
 import {NavigatorState} from "./Navigator/reducers";
+import thunkMiddleware from 'redux-thunk';
 
 export interface ApplicationState {
     router?: any;
@@ -24,6 +25,7 @@ export const store = createStore(
     composeEnhancers(
         applyMiddleware(
             routerMiddleware(history), // for dispatching history actions
+            thunkMiddleware
             // ... other middlewares ...
         ),
     ),

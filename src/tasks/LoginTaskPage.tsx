@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {PureComponent} from "react";
-import {connect} from "react-redux";
-import {TaskProps} from "./models";
-import {cancelTask, startTask} from "./actionCreators";
-import {LoginFormContainer} from "../containers/LoginFormContainer/LoginFormContainer";
-import {ApplicationState} from "../configureStore";
-import {Divider, Grid, Typography} from "@material-ui/core";
+import {PureComponent} from 'react';
+import {connect} from 'react-redux';
+import {TaskProps} from './models';
+import {cancelTask, startTask} from './actionCreators';
+import LoginFormContainer from '../containers/LoginFormContainer/LoginFormContainer';
+import {ApplicationState} from '../configureStore';
+import {Divider, Grid, Typography} from '@material-ui/core';
 
 class LoginTaskPage extends PureComponent {
     constructor(public props: TaskProps) {

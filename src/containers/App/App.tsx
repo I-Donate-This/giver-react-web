@@ -5,7 +5,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import withRoot from '../../withRoot';
 import {Route, Switch} from 'react-router-dom';
 import LoginTask from "../../tasks/LoginTaskPage";
-import AppBarContainer from "../AppBar/AppBarContainer";
+import AppBarContainer from '../AppBar/AppBarContainer';
 import HomePage from "../../pages/HomePage";
 
 const styles = (theme: Theme) =>
