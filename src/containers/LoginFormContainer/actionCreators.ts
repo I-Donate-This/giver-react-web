@@ -56,12 +56,6 @@ function responseSubmit(result: string): LoginAsyncResultSubmitAction {
 
 function sendHttpLoginRequest(credentials: Credentials) {
     return axios.post(`http://localhost:3001/api/v1/users/login`, credentials);
-    // return Promise.resolve({
-    //     data: {
-    //         credentials: credentials,
-    //         result: {success: true}
-    //     }
-    // });
 }
 
 export function submitLogin(credentials: Credentials) {
