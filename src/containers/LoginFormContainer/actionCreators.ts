@@ -1,5 +1,5 @@
 import {Action, Dispatch} from "redux";
-// import axios from 'axios';
+import axios from 'axios';
 
 const LOGIN_UI_USER_SUBMIT = '[LOGIN][UI] USER_SUBMIT';
 const LOGIN_ASYNC_REQUEST_SUBMIT = '[LOGIN][ASYNC] REQUEST_SUBMIT';
@@ -40,39 +40,28 @@ function requestSubmit(data: Credentials): LoginAsyncRequestSubmitAction {
 
 interface LoginAsyncResultSubmitAction extends Action {
     payload: {
-        credentials: Credentials,
-        result: {
-            success: boolean;
-        }
+        result: string
     };
 }
 
-function responseSubmit(data: Credentials, success: boolean): LoginAsyncResultSubmitAction {
+function responseSubmit(result: string): LoginAsyncResultSubmitAction {
     return {
         type: LOGIN_ASYNC_RESULT_SUBMIT,
         payload: {
-            credentials: {
-                username: data.username,
-                password: data.password
-            },
-            result: {
-                success: success
-            }
+            result: result
         }
     };
 }
 
-// function sendMockHttpLoginRequest() {
-//     return axios.post(`http://localhost/login`, {hello: 'world'});
-// }
 
 function sendHttpLoginRequest(credentials: Credentials) {
-    return Promise.resolve({
-        data: {
-            credentials: credentials,
-            result: {success: true}
-        }
-    });
+    return axios.post(`http://localhost:3001/api/v1/users/login`, credentials);
+    // return Promise.resolve({
+    //     data: {
+    //         credentials: credentials,
+    //         result: {success: true}
+    //     }
+    // });
 }
 
 export function submitLogin(credentials: Credentials) {
@@ -80,7 +69,14 @@ export function submitLogin(credentials: Credentials) {
         dispatch(requestSubmit(credentials));
         return sendHttpLoginRequest(credentials)
             .then(response => response.data)
-            .then(json => dispatch(responseSubmit(json.credentials, true)));
+            .then(json => dispatch(responseSubmit(json.result)))
+            .catch(error => {
+                if (error.response && error.response.status === 403) {
+                    dispatch(responseSubmit('Unauthorized'));
+                } else {
+                    dispatch(responseSubmit('Failed'));
+                }
+            });
     }
 }
 
