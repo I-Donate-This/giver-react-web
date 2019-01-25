@@ -1,7 +1,7 @@
 import {
     makeSelectCurrentPage,
     makeSelectCurrentRoute,
-    makeSelectCurrentTask,
+    makeSelectCurrentTask, makeSelectIsUserAuthenticated,
     makeSelectNavigatoractivePagePath
 } from "../selectors";
 import {ApplicationState} from "../../../configureStore";
@@ -62,4 +62,16 @@ describe('App: selectors', () => {
         const activePagePath = selector(state);
         expect(activePagePath).toEqual('/secure/posts');
     });
+
+    test('select authenticated state', () => {
+        const applicationState: ApplicationState = {
+            auth: {
+                authenticated: true
+            }
+        };
+
+        const result = makeSelectIsUserAuthenticated()(applicationState);
+
+        expect(result).toEqual(true);
+    })
 });

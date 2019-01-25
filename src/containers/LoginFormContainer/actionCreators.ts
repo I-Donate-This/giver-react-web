@@ -3,7 +3,13 @@ import axios from 'axios';
 
 const LOGIN_UI_USER_SUBMIT = '[LOGIN][UI] USER_SUBMIT';
 const LOGIN_ASYNC_REQUEST_SUBMIT = '[LOGIN][ASYNC] REQUEST_SUBMIT';
-const LOGIN_ASYNC_RESULT_SUBMIT = '[LOGIN][ASYNC] RESULT_SUBMIT';
+export const LOGIN_ASYNC_RESULT_SUBMIT = '[LOGIN][ASYNC] RESULT_SUBMIT';
+
+export enum LoginResponse {
+    SUCCESS = 200,
+    UNAUTHORIZED = 403,
+    FAILED = 500,
+}
 
 export interface Credentials {
     username: string;
@@ -38,13 +44,13 @@ function requestSubmit(data: Credentials): LoginAsyncRequestSubmitAction {
     };
 }
 
-interface LoginAsyncResultSubmitAction extends Action {
+export interface LoginAsyncResultSubmitAction extends Action {
     payload: {
-        result: string
+        result: number
     };
 }
 
-function responseSubmit(result: string): LoginAsyncResultSubmitAction {
+export function responseSubmit(result: LoginResponse): LoginAsyncResultSubmitAction {
     return {
         type: LOGIN_ASYNC_RESULT_SUBMIT,
         payload: {
@@ -63,12 +69,12 @@ export function submitLogin(credentials: Credentials) {
         dispatch(requestSubmit(credentials));
         return sendHttpLoginRequest(credentials)
             .then(response => response.data)
-            .then(json => dispatch(responseSubmit(json.result)))
+            .then(json => dispatch(responseSubmit(LoginResponse.SUCCESS)))
             .catch(error => {
                 if (error.response && error.response.status === 403) {
-                    dispatch(responseSubmit('Unauthorized'));
+                    dispatch(responseSubmit(LoginResponse.UNAUTHORIZED));
                 } else {
-                    dispatch(responseSubmit('Failed'));
+                    dispatch(responseSubmit(LoginResponse.FAILED));
                 }
             });
     }

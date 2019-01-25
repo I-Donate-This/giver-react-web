@@ -7,12 +7,14 @@ import {PagesState} from "./pages/models";
 import {TasksState} from "./tasks/models";
 import {NavigatorState} from "./Navigator/reducers";
 import thunkMiddleware from 'redux-thunk';
+import {LoginState} from './containers/LoginFormContainer/reducers';
 
 export interface ApplicationState {
     router?: any;
     navigator?: NavigatorState;
     pages?: PagesState;
     tasks?: TasksState;
+    auth?: LoginState;
 }
 
 export const history = createBrowserHistory();

@@ -2,7 +2,8 @@ import * as React from "react";
 import {LoginForm} from "../../components/LoginForm/LoginForm";
 import {connect} from "react-redux";
 import {Credentials, login, submitLogin} from "./actionCreators";
-import {ApplicationState} from "../../configureStore";
+import {createStructuredSelector} from 'reselect';
+import {makeSelectIsUserAuthenticated} from '../App/selectors';
 
 export interface LoginFormModel {
     username?: string;
@@ -11,6 +12,7 @@ export interface LoginFormModel {
 
 export interface LoginFormContainerProps {
     dispatch: any; //TODO: WHAT TYPE SHOULD THIS BE???
+    isAuthenticated: boolean;
 }
 
 class LoginFormContainer extends React.Component<LoginFormContainerProps> {
@@ -25,10 +27,10 @@ class LoginFormContainer extends React.Component<LoginFormContainerProps> {
     }
 
     render(): React.ReactNode {
-        return <LoginForm onLoginSubmit={this.handleLoginSubmit}/>;
+        return <LoginForm isAuthenticated={this.props.isAuthenticated} onLoginSubmit={this.handleLoginSubmit}/>;
     }
 }
 
-export default connect(
-    (state: ApplicationState) => state
-)(LoginFormContainer);
+export default connect(createStructuredSelector({
+    isAuthenticated: makeSelectIsUserAuthenticated()
+}))(LoginFormContainer);
